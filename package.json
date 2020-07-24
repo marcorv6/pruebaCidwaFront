@@ -1,0 +1,14 @@
+{
+  "name": "pruebacidwa",
+  "version": "1.0.0",
+  "description": "Esta es una aplicacion web de prueba",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "author": "Marco",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}

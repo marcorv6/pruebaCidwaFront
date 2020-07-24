@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="icon" type="image/png" href="./images/4259.png">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div class="general" id="app">
+    <div class="menu sticky-top" style="display: block;">
+      <nav class="barraNav navbar navbar-dark">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="signup.html">Registrarse</a>
+        <a class="nav-link" href="login.html">Ingresar</a>
+        <a class="nav-link" href="CRUD.html">CRUD</a>
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+          <img class="cart_logo" src="images/307-3071593_accessories-shopping-cart-icon-white.png" alt="Cart">
+          <span>{{ cart.length }}</span>
+        </button>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="container containerCards">
+        <div class="row">
+          <div class="col-4">
+            <div class="card" v-for="libro in libros" :key="libro.idLibro" >
+              <img class="cards" v-bind:src="libro.imagen" alt="" style="width: 200px; height: 300px;">
+              <div class="containerCard">
+                <h4><b class="text-uppercase text-center">{{ libro.titulo }}</b></h4>
+                <p class="font-weight-bold"> {{"ID: " +libro.idLibro}} </p>
+                <p class="font-weight-bold">{{ libro.autor }} </p>
+                <p class="font-weight-bolder text-center"> {{'precio: '+'$ '+ libro.precio }} </p>
+                <button @click="onClickEliminar(libro.idLibro)" class="btn btn-lg btn-danger btn-block">Eliminar libro</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <p class="text-uppercase text-center">Editar libro</p>
+            <label class="inputCRUD" for="idLibro">ID:</label><br>
+            <input type="text" class="form-control" name="idLibro" placeholder="Ingresa el ID" v-model="editLibro.idLibro"><br>
+            <label for="imagen">Imagen:</label><br>
+            <input type="text" class="form-control" name="imagen" placeholder="Ingresa el nuevo URL de imagen" v-model="editLibro.imagen"><br>
+            <label for="titulo">Título:</label><br>
+            <input type="text" class="form-control" name="titulo" placeholder="Ingresa el nuevo título" v-model="editLibro.titulo"><br>
+            <label for="precio">Precio:</label><br>
+            <input type="text" class="form-control" name="precio"placeholder="Ingresa el nuevo precio" v-model="editLibro.precio"><br>
+            <button class="btn btn-block text-uppercase" style="margin-top: 20px;" v-on:click="onClickEdit(editLibro)">Editar libro</button>
+          </div>
+          <div class="col-4">
+            <p class="text-uppercase text-center">Añadir libro</p>
+            <label class="inputCRUD" for="autor">autor:</label><br>
+            <input type="text" class="form-control" name="autor" placeholder="Ingresa el autor" v-model="newLibro.autor"><br>
+            <label for="imagen">Imagen:</label><br>
+            <input type="text" class="form-control" name="imagen" placeholder="Ingresa el URL de imagen" v-model="newLibro.imagen"><br>
+            <label for="editorial">Editorial:</label><br>
+            <input type="text" class="form-control" name="editorial" placeholder="Ingresa la editorial" v-model="newLibro.editorial"><br>
+            <label for="titulo">Título:</label><br>
+            <input type="text" class="form-control" name="titulo" placeholder="Ingresa el título" v-model="newLibro.titulo"><br>
+            <label for="genero">Género:</label><br>
+            <input type="text" class="form-control" name="genero" placeholder="Ingresa el género" v-model="newLibro.genero"><br>
+            <label for="precio">Precio:</label><br>
+            <input type="text" class="form-control" name="precio" placeholder="Ingresa el precio" v-model="newLibro.precio"><br>
+            <label for="stock">Stock:</label><br>
+            <input type="text" class="form-control" name="stock" placeholder="Ingresa el stock disponible" v-model="newLibro.stock"><br>
+            <button class="btn btn-block text-uppercase" style="margin-top: 20px;" @click="onClickCreateLibro(newLibro)">Añadir libro</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+
+    
+</body>
+</html>

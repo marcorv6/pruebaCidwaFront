@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tienda de Libros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="./images/4259.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+
+  <body>
+    <div class="general" id="app">
+      <div class="header">
+          <div class="containerLogos">
+            <a class="logoPrincipal" href="https://www.unam.mx/" a target="_blank"><img src="images/Logo-UNAM.png" alt="Logo UNAM"> </a>
+            <a class="logoPrincipal" href="https://www.acatlan.unam.mx/" a target="_blank"><img src="images/logo-fesa-45.png" alt="Logo FES"> </a>
+          </div>
+      </div>
+      <div class="menu sticky-top" style="display: block;">
+        <nav class="barraNav navbar navbar-dark">
+          <a class="nav-link" href="index.html">Inicio</a>
+          <a class="nav-link" href="signup.html">Registrarse</a>
+          <a class="nav-link" href="login.html">Ingresar</a>
+          <a class="nav-link" href="CRUD.html">CRUD</a>
+          <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+            <img class="cart_logo" src="images/307-3071593_accessories-shopping-cart-icon-white.png" alt="Cart">
+            <span>{{ cart.length }}</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="contenedorVergas" >
+        <div class="container">
+          <a class="banner" href="index.html">
+            <img src="./images/Anuncio.png" alt="banner" class="img-fluid">
+          </a>
+        </div>
+        <div class="container containerCards">
+          <p class="Productos text-uppercase text-center font-weight-bold">Todos nuestros libros</p>
+          <div class="row">
+            <div class="col-4" v-for="libro in libros" :key="libro.idLibro">
+              <div class="card" >
+                <img class="img-fuid cards cardImage" v-bind:src="libro.imagen" alt="" style="width: 250px; height: 300px;">
+                <div class="containerCard">
+                  <h4><b class="text-uppercase text-center">{{ libro.titulo }}</b></h4>
+                  <p class="font-weight-bold">{{ libro.autor }} </p>
+                  <p class="font-weight-bolder precio text-center"> {{'$ '+ libro.precio }} </p>
+                  <button @click="addToCart(libro.idLibro)" class="btn btn-lg btn-block">Añadir al carrito</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carrito">
+          <div class="container" id="lista" style="display: block;">
+            <p class="text-uppercase font-weight-bold text-center"> {{ 'Monto a pagar: '+'$'+ monto() }} </p>
+            <button class="btn botonCompra btn-block">COMPRAR</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <footer class=" footer pt-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 mb-4 text-center">
+                <form class="row ">
+                  <span  class="col-6 col-md-12" style=color:white;>SIGUENOS:</span>
+                  <div class="container ">
+                      <a href="https://web.facebook.com/unamacatlan" a target="_blank"class=""> <img class="social_logo"src="images/facebook_logo.png" alt="logo facebook"> </a>
+                      <a href="https://www.instagram.com/fes_acatlan/" class="logo" a target="_blank"> <img class="social_logo"src="images/instagram_logo.png" alt="logo instagram"> </a>
+                      <a href="https://twitter.com/FES_ACATLAN" class="logo" a target="_blank"> <img class="social_logo"src="images/logo_twitter.png" alt="logo twitter"> </a>
+                    </div>
+                </form>
+              </div>
+              <div class="col-md-6 mb-4">
+                <form class="derechos text-justify">
+                  <span>
+                    <font size="2">
+                    Hecho en México, todos los derechos reservados 2020. Esta página puede ser reproducida con fines no lucrativos, siempre y cuando no se mutile, se cite la fuente completa y su dirección electrónica. De otra forma, requiere permiso previo por escrito de la institución.
+                  </font>
+                </span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+
+  </body>
+
+</html>
